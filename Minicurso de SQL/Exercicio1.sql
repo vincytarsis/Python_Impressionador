@@ -9,10 +9,12 @@ DE.LastName,
 DE.Title,
 DE.Gender,
 DE.DepartmentName
+-- Dica Hashtag - CONCAT(fisrtname, ' ', lastname) as 'FullName'
 from DimEmployee as DE
 
 --3 Filtre apenas os funcionarios do Gênoro Masculino
-select * from DimEmployee as DE
+select *-- Dica Hashtag - replace(REPLACE(Gender, 'M','Masculuino'), 'F','Femenino') as 'Genero',
+from DimEmployee as DE
 where DE.Gender = 'M'
 
 --4 Filtre apenas os homens que são Gerentes Regionais (Sales Region Manager)
@@ -32,3 +34,11 @@ select * from DimEmployee as DE
 where DE.Gender = 'M' and
 (DE.Title = 'Sales Region Manager' or DE.Title = 'Sales State Manager') and
 DE.DepartmentName = 'Production'
+
+--Filtre apenas os homens que são Gerentes Regionais (“Sales Region Manager”) ou Gerentes de Estado
+--(“Sales State Manager”) que são da área do Departamento de Produção (“Production”) ou do departamento
+--de Marketing
+select * from DimEmployee DE
+where DE.Gender = 'M' and
+(DE.Title = 'Sales Region Manager' or DE.Title = 'Sales State Manager') and
+(DE.DepartmentName = 'Production' or DE.DepartmentName = 'Marketing')
