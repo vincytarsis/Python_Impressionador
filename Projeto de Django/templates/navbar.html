@@ -1,11 +1,13 @@
+{% load static %}
+
 <nav class="w-full flex justify-between items-center py-3 px-4 fixed x-50" xmlns="http://www.w3.org/1999/html">
     <div class="w-6/12">
         <a  href="#">
-            <img class="w-5/12" src="">
+            <img class="w-5/12" src="{% static 'images/hashflix.png' %}">
         </a>
     </div>
 
-    <div class="w-6/12">
+    <div class="w-6/12 flex flex-nowrap justify-end">
 
         <div class="mr-2">
             <form>
@@ -14,10 +16,19 @@
         </div>
 
         <div class="mr-2">
-
+            <a href="#">
+                <button class="bg-red-600 text-white py-1 px-3 rounded-md">
+                    Login
+                </button>
+            <a/>
         </div>
 
         <div class="mr-2">
+            <a href="#">
+                <button class="bg-red-600 text-white py-1 px-3 rounded-md">
+                    Editar Perfil
+                </button>
+            </a>
 
         </div>
 
