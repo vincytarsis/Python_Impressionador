@@ -7,7 +7,7 @@ HomeFilmes LOLflix
 {% block content %}
 <div class="py-10">
     <h1>Pagina filmes</h1>
-    {% for filme in lista_filmes %}
+    {% for filme in object_list %}
     <hr>
     <p>{{ filme }}</p>
     <p>{{ filme.descricao }}</p>
