@@ -1473,7 +1473,7 @@ for vendedor, dados_vendas in vendas_vendedores.items():
 
 # solução
 
-# 1. Crie um dicionário vazio para armazenar os clientes e seus segmentos.
+""" # 1. Crie um dicionário vazio para armazenar os clientes e seus segmentos.
 clientes = {}
 
 # 2. Crie um loop infinito que solicite ao usuário o nome do cliente e suas compras totais.
@@ -1499,12 +1499,10 @@ while True:
             
 # 5. Fora do loop, use um loop for para imprimir o nome e o segmento de cada cliente.
 for nome_cliente, segmento in clientes.items():
-    print(f"{nome_cliente} Segmento do Cliente = {segmento}")
+    print(f"{nome_cliente} Segmento do Cliente = {segmento}") """
 
 # ### Segunda versão da segmentação de clientes
-# 
 
-# 
 # Mantenha a mesma funcionalidade do programa anterior, mas agora valide a entrada do usuário.
 # Se o usuário digitar um valor inválido para compras, mostre a mensagem
 # "Entrada inválida. Por favor, digite um número para compras." e peça para o usuário digitar
@@ -1516,7 +1514,7 @@ for nome_cliente, segmento in clientes.items():
 # ```python
 # segmentos = [(1000, 'Bronze'), (5000, 'Prata'), (float('inf'), 'Ouro')]
 # ``` 
-# 
+
 # Assim, outros segmentos podem ser adicionados facilmente. O primeiro elemento da tupla é o
 # limite de compras e o segundo é o nome do segmento. O último elemento da lista é uma tupla
 # com limite `float('inf')`, que representa o segmento Ouro. Isso significa que, se o valor de
@@ -1530,10 +1528,44 @@ for nome_cliente, segmento in clientes.items():
 
 # In[ ]:
 
-
 # solução
  
+# 1. Crie um dicionário vazio para armazenar os clientes e seus segmentos.
+clientes = {}
 
+# 2. Crie um loop infinito que solicite ao usuário o nome do cliente e suas compras totais.
+while True:
+    nome_cliente = input("Digite o nome do cliente (ou 'sair' para sair): ")
+    
+# 4. Se o usuário digitar 'sair' para o nome do cliente, encerre o loop usando break.
+    if nome_cliente.lower() == "sair":
+         break
+    
+# Se o usuário digitar um valor inválido para compras, mostre a mensagem
+# "Entrada inválida. Por favor, digite um número para compras." e peça para o usuário digitar
+# novamente. Tal validação deve ser feita usando try/except.
+    try:
+        vendas = int(input("Digite o total de compras: "))
+    except ValueError:
+        print("Entrada inválida. Por favor, digite um número para compras.")
+        continue
+
+# 3. Dentro do loop, use uma declaração if para atribuir o segmento apropriado ao cliente.    
+    vendas = int(input("Digite o total de compras: "))
+
+    if vendas <= 1000:
+        segmento = "Bronze"
+        
+    if vendas > 1000 and vendas <= 5000:
+        segmento = "Prata"
+        
+    if vendas > 5000:
+        segmento = "Ouro"
+    clientes[nome_cliente] = segmento
+            
+# 5. Fora do loop, use um loop for para imprimir o nome e o segmento de cada cliente.
+for nome_cliente, segmento in clientes.items():
+    print(f"{nome_cliente} Segmento do Cliente = {segmento}")
 
 # ### Terceira versão da segmentação de clientes
 
