@@ -1532,6 +1532,9 @@ for nome_cliente, segmento in clientes.items():
  
 # 1. Crie um dicionário vazio para armazenar os clientes e seus segmentos.
 clientes = {}
+#Além disso, ao invés de deixar os limites de compras fixos no programa, armazene-os em uma
+# lista de tuplas. Por exemplo:
+segmentos = [(1000, 'Bronze'), (5000, 'Prata'), (float('inf'), 'Ouro')]
 
 # 2. Crie um loop infinito que solicite ao usuário o nome do cliente e suas compras totais.
 while True:
@@ -1550,19 +1553,19 @@ while True:
         print("Entrada inválida. Por favor, digite um número para compras.")
         continue
 
-# 3. Dentro do loop, use uma declaração if para atribuir o segmento apropriado ao cliente.    
-    vendas = int(input("Digite o total de compras: "))
-
-    if vendas <= 1000:
-        segmento = "Bronze"
-        
-    if vendas > 1000 and vendas <= 5000:
-        segmento = "Prata"
-        
-    if vendas > 5000:
-        segmento = "Ouro"
-    clientes[nome_cliente] = segmento
+# 3. Dentro do loop, use uma declaração if para atribuir o segmento apropriado ao cliente.
+    for item in segmentos:
+        valor_compra, segmento = item
+        if vendas <= 1000:
+            segmento = "Bronze"
             
+        if vendas > 1000 and vendas <= 5000:
+            segmento = "Prata"
+            
+        if vendas > 5000:
+            segmento = "Ouro"
+        clientes[nome_cliente] = segmento
+                
 # 5. Fora do loop, use um loop for para imprimir o nome e o segmento de cada cliente.
 for nome_cliente, segmento in clientes.items():
     print(f"{nome_cliente} Segmento do Cliente = {segmento}")
