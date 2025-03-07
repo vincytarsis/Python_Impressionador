@@ -1554,23 +1554,16 @@ while True:
         continue
 
 # 3. Dentro do loop, use uma declaração if para atribuir o segmento apropriado ao cliente.
-    for item in segmentos:
-        valor_compra, segmento = item
-        if vendas <= 1000:
-            segmento = "Bronze"
-            
-        if vendas > 1000 and vendas <= 5000:
-            segmento = "Prata"
-            
-        if vendas > 5000:
-            segmento = "Ouro"
-        clientes[nome_cliente] = segmento
+    for limite, segmento in segmentos:
+        if vendas <= limite:
+            clientes[nome_cliente] = segmento
+            break
                 
 # 5. Fora do loop, use um loop for para imprimir o nome e o segmento de cada cliente.
 for nome_cliente, segmento in clientes.items():
     print(f"{nome_cliente} Segmento do Cliente = {segmento}")
 
-# ### Terceira versão da segmentação de clientes
+# ### Terceira versão da segmentaçãode clientes
 
 # Mantenha a funcionalidade do programa, mas agora use funções para organizar o código. Crie funções para cada uma das operações: `solicitar_nome_cliente`, `solicitar_total_compras` e `atribuir_segmento` e `print_segmento_por_cliente`. O programa deve continuar funcionando da mesma forma, mas agora o código deve estar organizado em funções. Além disso, normalize que todos os nomes sejam armazenados em letras minúsculas.
 
